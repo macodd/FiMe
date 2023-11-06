@@ -48,6 +48,13 @@ INSTALLED_APPS = [
     # local
     "accounts",
     "dashboard",
+    "allergy",
+    "dimension",
+    "immunization",
+    "medic",
+    "medication",
+    "patient",
+    "visit",
 ]
 
 MIDDLEWARE = [
