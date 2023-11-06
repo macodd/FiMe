@@ -14,4 +14,3 @@ def get_config():
 
 
 config = get_config()
-
