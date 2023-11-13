@@ -7,3 +7,8 @@ class FimeUser(AbstractUser):
 
     def __str__(self):
         return self.email
+
+    def save(self, *args, **kwargs):
+        self.first_name = self.first_name.title()
+        self.last_name = self.last_name.title()
+        super().save(*args, **kwargs)
