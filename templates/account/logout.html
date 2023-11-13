@@ -1,13 +1,11 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
-    <div>
-    <a href="{% url 'accounts:register' %}">Sign up</a>
-    </div>
-    <h2>Log In</h2>
+    <h2>Log Out</h2>
+    <p>Are you sure you want to log out?</p>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Log In</button>
+        <button type="submit">Log out</button>
     </form>
 {% endblock %}
