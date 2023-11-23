@@ -1,4 +1,5 @@
 from django.shortcuts import redirect
+from django.urls import reverse_lazy
 from django.contrib.auth.views import LoginView, LogoutView, TemplateView, FormView
 from betterforms.multiform import MultiModelForm
 
@@ -26,7 +27,7 @@ class UserLoginView(LoginView):
     template_name = "account/login.html"
 
     def get_success_url(self):
-        return redirect("dashboard:home")
+        return reverse_lazy("dashboard:home")
 
 
 class UserLogoutView(LogoutView):

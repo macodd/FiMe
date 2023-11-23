@@ -131,6 +131,5 @@ AUTH_USER_MODEL = "accounts.FimeUser"
 
 SITE_ID = 1
 
-ACCOUNT_FORMS = {"signup": "accounts.forms.FimeUserCreationForm"}
 LOGIN_REDIRECT_URL = "dashboard:home"
-ACCOUNT_LOGOUT_REDIRECT_URL = "login"
+ACCOUNT_LOGOUT_REDIRECT_URL = "accounts:login"

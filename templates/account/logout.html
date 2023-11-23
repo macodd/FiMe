@@ -1,11 +1,8 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
-    <h2>Log Out</h2>
-    <p>Are you sure you want to log out?</p>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Log out</button>
-    </form>
+    <div class="py-5">
+        <h2>Log Out Successful</h2>
+        <p>Thank you for using FiMe services</p>
+    </div>
 {% endblock %}
