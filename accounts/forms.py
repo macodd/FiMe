@@ -7,6 +7,8 @@ from medic.models import Medic
 
 
 class FimeUserCreationForm(UserCreationForm):
+    phone = forms.CharField(max_length=16, validators=[valid_phone])
+
     class Meta:
         model = FimeUser
         fields = ["first_name", "last_name", "email", "phone", "username"]

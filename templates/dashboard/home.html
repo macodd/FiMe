@@ -1,0 +1,60 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+    <div class="container text-center">
+        <div class="row justify-content-center">
+           <form class="d-flex gy-5 col-9 col-lg-6" role="search">
+               <input id="search-patient" class="form-control me-2" type="search" placeholder="Search by last name.." onkeyup="searchFunction()" aria-label="Search">
+           </form>
+        </div>
+    {% if object_list %}
+        <div class="row justify-content-center py-5">
+            <div>
+                <h2>Patients</h2>
+            </div>
+            <ul id="patient-list" class="list-group">
+                {% for patient in object_list %}
+                    {% if forloop.counter0 < 100 %}
+                        <a href="#" class="list-group-item list-group-item-action">
+                            {{ patient.last_name }}, {{ patient.first_name }}
+                            (<small>
+                                <small class="text-secondary">DOB: {{ patient.dob }}
+                                </small>
+                            </small>)
+                        </a>
+                    {% else %}
+                        <a href="#" class="list-group-item list-group-item-action" style="display: none">
+                            {{ patient.last_name }}, {{ patient.first_name }}
+                            (<small>
+                            <small class="text-secondary">DOB: {{ patient.dob }}
+                            </small>
+                        </small>)
+                        </a>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+   </div>
+{% endblock %}
+
+{% block script %}
+    <script>
+        function searchFunction() {
+            let input = document.getElementById("search-patient");
+            let filter = input.value.toLowerCase();
+            let patientList = document.getElementById("patient-list");
+            let patientItems = patientList.getElementsByTagName("a");
+            let name;
+
+            for (let i = 0; i < patientItems.length; i++) {
+                name = patientItems[i].textContent || patientItems[i].innerText;
+                if (name.toLowerCase().indexOf(filter) > -1) {
+                    patientItems[i].style.display = ""
+                } else {
+                    patientItems[i].style.display = "none"
+                }
+            }
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,15 @@
+<!-- As a heading -->
+<nav class="navbar" style="background-color: #e3f2fd;">
+    <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1">FiMe</span>
+        <div>
+            {% if user.is_authenticated %}
+                Hi {{ user.first_name }}!
+                <a class="btn btn-outline-success" href="{% url 'accounts:logout' %}">Log Out</a>
+            {% else %}
+                <a class="btn btn-primary" href="{% url 'accounts:login' %}">Log In</a>
+                <a class="btn btn-outline-success" href="{% url 'accounts:register' %}">Sign Up</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>
