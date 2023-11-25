@@ -11,6 +11,3 @@ class PatientFormType(Enum):
 
     def is_one_value(self):
         return self == self.ONE_VALUE
-
-    def is_two_value(self):
-        return self == self.TWO_VALUE
