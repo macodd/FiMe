@@ -16,7 +16,7 @@ class Medic(models.Model):
     patients = models.ManyToManyField(to=Patient, through="Membership")
 
     def __str__(self):
-        return f"{self.ruc:013}"
+        return f"{self.user}"
 
 
 class Membership(models.Model):

@@ -19,18 +19,18 @@ class JsonResponseMixin:
                 patient_qs = Patient.objects.filter(id=patient_id)
                 if patient_qs.exists():
                     data = {"patients", patient_qs}
-            search_values = search_data.split()
-            if len(search_values) == 1:
-                patient_qs = Patient.objects.filter(
-                    last_name__startswith=search_values[0]
-                )
-                if patient_qs.exists():
-                    data = {"patients": patient_qs}
-            if len(search_values) == 2:
-                patient_qs = Patient.objects.filter(
-                    first_name__startswith=search_values[0],
-                    last_name__startswith=search_values[1],
-                )
-                if patient_qs.exists():
-                    data = {"patients": patient_qs}
+            else:
+                search_values = search_data.split(",")
+                if len(search_values) == 1:
+                    last_name = search_values[0].title()
+                    patient_qs = Patient.objects.filter(last_name__startswith=last_name)
+                    if patient_qs.exists():
+                        data = {"patients": patient_qs}
+                elif len(search_values) == 2:
+                    patient_qs = Patient.objects.filter(
+                        first_name__startswith=search_values[1].title(),
+                        last_name__startswith=search_values[0].title(),
+                    )
+                    if patient_qs.exists():
+                        data = {"patients": patient_qs}
             return JsonResponse(data)
