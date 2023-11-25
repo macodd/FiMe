@@ -1,9 +1,10 @@
 from django.shortcuts import redirect
-from django.urls import reverse_lazy
 from django.contrib.auth.views import LoginView, LogoutView, TemplateView, FormView
+
 from betterforms.multiform import MultiModelForm
 
-from .forms import MedicRegister, FimeUserCreationForm
+from .forms import FimeUserCreationForm
+from medic.forms import MedicRegister
 
 
 class MedicCreationForm(MultiModelForm):
@@ -25,9 +26,7 @@ class MedicRegisterView(FormView):
 class UserLoginView(LoginView):
     redirect_authenticated_user = True
     template_name = "account/login.html"
-
-    def get_success_url(self):
-        return reverse_lazy("dashboard:home")
+    success_url = "dashboard/"
 
 
 class UserLogoutView(LogoutView):
