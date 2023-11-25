@@ -1,0 +1,13 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+    <h2>Add New Patient</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="py-3">
+            <a href="{%  url 'dashboard:home' %}" class="btn btn-outline-danger">Cancel</a>
+            <button class="btn btn-primary" type="submit">Create</button>
+        </div>
+    </form>
+{% endblock %}
