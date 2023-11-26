@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class PatientFormType(Enum):
+class SearchFormType(Enum):
     DIGIT = 0
     ONE_VALUE = 1
     TWO_VALUE = 2
