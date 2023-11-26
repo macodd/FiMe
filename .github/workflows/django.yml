@@ -6,11 +6,6 @@ on:
   pull_request:
     branches: [ "develop" ]
 
-env:
-  DJANGO_SECRET_KEY: secret-key
-  DB_USER: github-user
-  DB_PASSWORD: github-db-password
-
 jobs:
   build:
 

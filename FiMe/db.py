@@ -17,8 +17,8 @@ else:
         "default": {
             "ENGINE": "django.db.backends.postgresql",
             "NAME": "fime_db",
-            "USER": config.get("DB_USER"),
-            "PASSWORD": config.get("DB_PASSWORD"),
+            "USER": config("DB_USER", default="db-user"),
+            "PASSWORD": config("DB_PASSWORD", default="db-password"),
             "HOST": "localhost",
             "PORT": "5432",
         }
