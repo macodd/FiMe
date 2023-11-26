@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class PatientFormType(Enum):
+class SearchFormType(Enum):
     DIGIT = 0
     ONE_VALUE = 1
     TWO_VALUE = 2
@@ -11,6 +11,3 @@ class PatientFormType(Enum):
 
     def is_one_value(self):
         return self == self.ONE_VALUE
-
-    def is_two_value(self):
-        return self == self.TWO_VALUE

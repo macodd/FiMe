@@ -1,4 +1,4 @@
-name: Django CI
+name: Run Functional Tests
 
 on:
   push:
@@ -6,15 +6,16 @@ on:
   pull_request:
     branches: [ "develop" ]
 
+env:
+  CURRENT_ENV: "CI/CD"
+
 jobs:
   build:
-
     runs-on: ubuntu-latest
     strategy:
-      max-parallel: 4
+      max-parallel: 2
       matrix:
-        python-version: [3.7, 3.8, 3.9]
-
+        python-version: [3.11]
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python ${{ matrix.python-version }}
@@ -25,6 +26,10 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+    - name: Migrate
+      run: |
+        python manage.py makemigrations
+        python manage.py migrate
     - name: Run Tests
       run: |
         python manage.py test
