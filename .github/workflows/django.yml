@@ -6,12 +6,15 @@ on:
   pull_request:
     branches: [ "develop" ]
 
+env:
+  CURRENT_ENV: "CI/CD"
+
 jobs:
   build:
 
     runs-on: ubuntu-latest
     strategy:
-      max-parallel: 4
+      max-parallel: 2
       matrix:
         python-version: [3.11]
 
